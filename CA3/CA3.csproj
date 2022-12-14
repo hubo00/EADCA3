@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' ">
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' ">
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Index.razor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="RestaurantBase.razor.cs">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Compile>
+    <Compile Update="RestaurantBase.razor.cs">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Compile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,222 @@
+﻿@page "/games"
+@inject HttpClient http
+
+<style>
+    main {
+        display: block;
+        left: 0;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        margin: 0;
+    }
+
+    .card {
+        margin: 10px;
+        height: 400px;
+        width: 250px;
+        padding: 20px;
+    }
+
+    .card img {
+        height: 200px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover .card{
+        background-color: darkslategray;
+        color: white;
+    }
+
+    .options{
+        display: inline;
+    }
+
+    .sorting-options {
+        display: inline;
+    }
+
+    .price-options{
+        display: inline;
+    }
+
+    .button{
+        padding: 5px;
+        border: 2px solid darkslategrey;
+        border-radius: 10px;
+        color: darkslategrey;
+    }
+
+    .button:hover{
+        background-color: darkslategrey;
+        color: white;
+    }
+
+    .button:active{
+        background-color: white;
+        color: darkslategrey;
+    }
+
+    #price-diff-output{
+        display:inline;
+        margin-left: 5px;
+    }
+
+    @@media (max-width: 1905px) {
+        .container {
+            grid-template-columns: repeat(5, 1fr) !important;
+        }
+    }
+
+    @@media (max-width: 1635px) {
+        .container {
+            grid-template-columns: repeat(4, 1fr) !important;
+        }
+    }
+
+    @@media (max-width: 1360px) {
+        .container {
+            grid-template-columns: repeat(3, 1fr) !important;
+        }
+    }
+
+    @@media (max-width: 1090px) {
+        .container {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+    }
+
+    @@media (max-width: 820px) {
+        .container {
+            grid-template-columns: repeat(1, 1fr) !important;
+        }
+    }
+</style>
+
+<PageTitle>Games</PageTitle>
+
+<main>
+    <div class="top-row">
+        <h1>Steam Store Games</h1>
+        <input id="text-input-box" type="text" @bind="title" @oninput="OnTitleChanged" />
+        <p>Press enter then any button</p>
+    </div>
+    @if (data != null)
+    {
+        @if (data.Length == 0)
+        {
+            <p id="no-data">Use the search box to search for Steam Games</p>
+        }
+        else
+        {
+            <div class="options">
+                <div class="sorting-options">
+                    <a class="button" id="option-asc" @onclick="SortAscending">Asc</a>
+                    <a class="button" id="option-desc" @onclick="SortDescending">Desc</a>
+                </div>
+                <div class="price-options">
+                    <a id="calc-diff" @onclick="@GetPriceDifference" class="button">Calc Diff</a>
+                    <p id="price-diff-output">@priceDifference</p>
+                </div>
+            </div>
+            <div class="container">
+                @foreach (var game in data)
+                {
+                    @if (game.SteamAppId != null)
+                    {
+                        <a href="https://store.steampowered.com/app/@game.SteamAppId">
+                            <div class="card">
+                                <h3 class="game-title">@game.External</h3>
+                                <div class="options">
+                                    <h5>Lowest Price: €</h5>
+                                    <h5 class="game-price">@game.Cheapest</h5>
+                                </div>
+                                <img src="@game.Thumb" alt="@game.External thumbnail " />
+                            </div>
+                        </a>
+                    }
+                }
+            </div>
+        }
+    }
+</main>
+
+@code {
+    String title = String.Empty;
+    private Game[] data;
+    double priceDifference;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            data = await http.GetFromJsonAsync<Game[]>($"https://www.cheapshark.com/api/1.0/games?title={title}");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            throw e;
+        }
+    }
+
+    private async Task OnTitleChanged()
+    {
+        try
+        {
+            data = await http.GetFromJsonAsync<Game[]>($"https://www.cheapshark.com/api/1.0/games?title={title}");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            throw e;
+        }
+    }
+
+    public class GameAscendingComparer : IComparer<Game>
+    {
+        public int Compare(Game x, Game y)
+        {
+            double cheapestX = Double.Parse(x.Cheapest);
+            double cheapestY = Double.Parse(y.Cheapest);
+
+            return cheapestX.CompareTo(cheapestY);
+        }
+    }
+
+    public class GameDescendingComparer : IComparer<Game>
+    {
+        public int Compare(Game x, Game y)
+        {
+            double cheapestX = Double.Parse(x.Cheapest);
+            double cheapestY = Double.Parse(y.Cheapest);
+
+            return -cheapestX.CompareTo(cheapestY);
+        }
+    }
+
+    public void SortAscending()
+    {
+        Array.Sort(data, new GameAscendingComparer());
+    }
+    public void SortDescending()
+    {
+        Array.Sort(data, new GameDescendingComparer());
+    }
+
+    public void GetPriceDifference()
+    {
+        double[] cheapestValues = data.Select(v => double.Parse(v.Cheapest)).ToArray();
+
+        double min = cheapestValues.Min();
+        double max = cheapestValues.Max();
+
+        priceDifference = max - min;
+    }
+}
+

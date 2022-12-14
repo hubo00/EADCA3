@@ -1,0 +1,41 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = CA3
+build_property.RootNamespace = CA3
+build_property.ProjectDir = /Volumes/T7-Shield/Projects/EAD-CA3/CA3/
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Volumes/T7-Shield/Projects/EAD-CA3/CA3
+build_property._RazorSourceGeneratorDebug = 
+
+[/Volumes/T7-Shield/Projects/EAD-CA3/CA3/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/T7-Shield/Projects/EAD-CA3/CA3/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/T7-Shield/Projects/EAD-CA3/CA3/Pages/SteamGames.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3RlYW1HYW1lcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/T7-Shield/Projects/EAD-CA3/CA3/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/T7-Shield/Projects/EAD-CA3/CA3/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ivfpve88s3
+
+[/Volumes/T7-Shield/Projects/EAD-CA3/CA3/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-i0o5ups7ii

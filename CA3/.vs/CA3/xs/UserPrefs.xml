@@ -1,0 +1,48 @@
+﻿<Properties StartupConfiguration="{F7785BF3-05E8-4655-A882-D4EE5E04F53A}|Default">
+  <MonoDevelop.Ide.ItemProperties.CA3_220Tests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pages/SteamGames.razor">
+    <Files>
+      <File FileName="Program.cs" Line="1" Column="1" IsPinned="True" />
+      <File FileName="App.razor" Line="1" Column="1" IsPinned="True" />
+      <File FileName="Shared/NavMenu.razor" />
+      <File FileName="wwwroot/index.html" />
+      <File FileName="Pages/Index.razor" />
+      <File FileName="Game.cs" />
+      <File FileName="Pages/SteamGames.razor" Line="1" Column="1" />
+      <File FileName="Shared/MainLayout.razor" Line="1" Column="1" />
+      <File FileName="Properties/launchSettings.json" />
+      <File FileName="../CA3 Tests/Usings.cs" />
+      <File FileName="../CA3 Tests/UnitTest1.cs" Line="99" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CA3" expanded="True">
+            <Node name="CA3" expanded="True">
+              <Node name="Pages" expanded="True">
+                <Node name="SteamGames.razor" selected="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
+              <Node name="Shared" expanded="True" />
+            </Node>
+            <Node name="CA3 Tests" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="CA3" expanded="True">
+            <Node name="CA3 Tests" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.CA3 PreferredExecutionTarget="/Applications/Firefox.app" />
+</Properties>
